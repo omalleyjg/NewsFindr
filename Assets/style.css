@@ -1,11 +1,31 @@
-#test{
+#right-side{
     text-align: center;
 }
 
-#test2{
+#left-side{
     text-align: center;
 }
 
 body{
     margin: 50px;
+}
+
+#searchbar{
+    margin: 20px 20px 40px 0px;
+}
+
+#herobanner{
+    margin-bottom: 20px;
+}
+
+#searchbanner{
+    margin-bottom: 20px;
+}
+
+button{
+    margin-bottom: 40px;
+}
+
+#trendingbanner{
+    margin-bottom: 40px;
 }
