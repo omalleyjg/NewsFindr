@@ -112,7 +112,7 @@ function getSearchedNews(search) {
                             )
                         } else {
                             $("#searchednews").append(
-                            
+
                                 "<br>"
                                 + "<h2>" + data.results[index].title + "</h2>"
                                 + "<br>"
