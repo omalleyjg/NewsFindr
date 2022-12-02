@@ -9,3 +9,11 @@
 body{
     margin: 50px;
 }
+h2 {
+    font-size: large;
+    font-weight: 600;
+}
+img{
+    height: 200px;
+    width: auto;
+}
