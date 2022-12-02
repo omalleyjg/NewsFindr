@@ -11,23 +11,26 @@ body{
 }
 
 #searchbar{
-    margin: 20px 40px 40px 0px;
+    margin: 20px 40px 0px 0px;
 }
 
 #herobanner{
     margin-bottom: 20px;
+    border-radius: 6px;
 }
 
 #searchbanner{
-    margin-bottom: 20px;
+    margin: 3px 10px 10px 10px;
+    border-radius: 6px;
 }
 
 button{
-    margin-bottom: 40px;
+    margin: 40px 0px 40px 0px
 }
 
 #trendingbanner{
-    margin-bottom: 40px;
+    margin: 3px 10px 10px 10px;
+    border-radius: 6px;
 }
 
 body{
