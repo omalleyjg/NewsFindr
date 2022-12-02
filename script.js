@@ -1,9 +1,11 @@
 
 
 
-function getTrendingNews() {
-    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_140025efc41d6f5a69d39e31054607d1d98c3&country=ca,us&language=en&category=top"
-
+function getTrendingNews(option) {
+    $("#trending").empty();
+    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_14107a7481f5c321a6b3ae7415b27d544ad0b&country=ca,us&language=en&category=" + option;
+    //  + option;
+    
 
     fetch(apiUrl)
         .then(function (response) {
@@ -14,45 +16,60 @@ function getTrendingNews() {
 
                     for (let index = 0; index < data.results.length; index++) {
 
+                        var title = data.results[index].title;
+                        var description = data.results[index].description;
+                        var link = data.results[index].link;
+                        var imageUrl = data.results[index].image_url;
 
-                        console.log(data.results[index].title);
-                        console.log(data.results[index].description);
-                        console.log(data.results[index].link);
                         console.log(data.results[index].image_url);
 
 
-                        if (data.results[index].image_url === null) {
-                            $("#trending").append(
-                                "<br>"
-                                + "<h2>" + data.results[index].title + "</h2>"
-                                + "<br>"
-                                + "<p>" + data.results[index].description + "</p>"
+                        if (imageUrl === null && description === null) {
+                            console.log("nothing");
+                        }
 
-                                + "<a href='" + data.results[index].link + "'>Read More</a>"
+                        else if (imageUrl === null) {
+                            $("#trending").append(
+                                 "<h2>" + title + "</h2>"
                                 + "<br>"
+                                + "<p class='desc'>" + description + "</p>"
+                                + "<a href='" + link + "'>"
+                                + "<button>"
+                                + "Read More"
+                                + "</button>"
+                                + "</a>"
+                                + "<hr>"
                             )
-                        } else if (data.results[index].description === null) {
+                        } else if (description === null) {
                             $("#trending").append(
-                                "<br>"
-                                + "<h2>" + data.results[index].title + "</h2>"
+                                 "<h2>" + title + "</h2>"
                                 + "<br>"
-                                + "<img src='" + data.results[index].image_url + "'/>"
-
-                                + "<a href='" + data.results[index].link + "'>Read More</a>"
-                                + "<br>"
+                                + "<img src='" + imageUrl + "'/>"
+                                + "<a href='" + link + "'>"
+                                + "<button>"
+                                + "Read More"
+                                + "</button>"
+                                + "</a>"
+                                + "<hr>"
                             )
-                        } else {
+                        }
+                        else if (imageUrl !== null && imageUrl.includes(".mp4")) {
+                        //    do nothing
+                        console.log("video");
+                        }
+                         else {
                             $("#trending").append(
-
-                                "<br>"
-                                + "<h2>" + data.results[index].title + "</h2>"
+                                 "<h2>" + title + "</h2>"
                                 + "<br>"
-                                + "<img src='" + data.results[index].image_url + "'/>"
+                                + "<img src='" + imageUrl + "'/>"
                                 + "<br>"
-                                + "<p>" + data.results[index].description + "</p>"
-
-                                + "<a href='" + data.results[index].link + "'>Read More</a>"
-                                + "<br>"
+                                + "<p class='desc'>" + description + "</p>"
+                                + "<a href='" + link + "'>"
+                                + "<button>"
+                                + "Read More"
+                                + "</button>"
+                                + "</a>"
+                                + "<hr>"
 
                             )
 
@@ -64,13 +81,13 @@ function getTrendingNews() {
         })
 }
 
-getTrendingNews();
+getTrendingNews(option = "top");
 
 
 
 function getSearchedNews(search) {
     $("#searchednews").empty();
-    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_140025efc41d6f5a69d39e31054607d1d98c3&country=ca,us&language=en&q=" + search
+    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_14107a7481f5c321a6b3ae7415b27d544ad0b&from_date=2022-11-1&to_date=2022-12-1&country=ca,us&language=en&q=" + search.replace(" ", "%20");
 
 
     fetch(apiUrl)
@@ -81,67 +98,101 @@ function getSearchedNews(search) {
                     console.log(data);
 
 
+                    if(data.totalResults === 0){
+                        $("#searchednews").append(
+                            "<h2>No results found</h2>"
+                        )
+                    }
+
                     for (let index = 0; index < data.results.length; index++) {
 
+                        $("a").on("click", function () {
+                            Window.open(link)
+                        });
 
-                        console.log(data.results[index].title);
-                        console.log(data.results[index].description);
-                        console.log(data.results[index].link);
+                        var title = data.results[index].title;
+                        var description = data.results[index].description;
+                        var link = data.results[index].link;
+                        var imageUrl = data.results[index].image_url;
+
                         console.log(data.results[index].image_url);
 
+                        
+                        if (imageUrl === null && description === null) {
+                            console.log("nothing");
+                        }
 
-                        if (data.results[index].image_url === null) {
+                        else if (imageUrl === null) {
                             $("#searchednews").append(
-                                "<br>"
-                                + "<h2>" + data.results[index].title + "</h2>"
+                                 "<h2>" + title + "</h2>"
                                 + "<br>"
-                                + "<p>" + data.results[index].description + "</p>"
-
-                                + "<a href='" + data.results[index].link + "'>Read More</a>"
-                                + "<br>"
+                                + "<p class='desc'>" + description + "</p>"
+                                + "<a href='" + link + "'>"
+                                + "<button>"
+                                + "Read More"
+                                + "</button>"
+                                + "</a>"
+                                + "<hr>"
                             )
-                        } else if (data.results[index].description === null) {
+                        } else if (description === null) {
                             $("#searchednews").append(
-                                "<br>"
-                                + "<h2>" + data.results[index].title + "</h2>"
+                                 "<h2>" + title + "</h2>"
                                 + "<br>"
-                                + "<img src='" + data.results[index].image_url + "'/>"
-
-                                + "<a href='" + data.results[index].link + "'>Read More</a>"
-                                + "<br>"
+                                + "<img src='" + imageUrl + "'/>"
+                                + "<a href='" + link + "'>"
+                                + "<button>"
+                                + "Read More"
+                                + "</button>"
+                                + "</a>"
+                                + "<hr>"
                             )
-                        } else {
+                        }
+                        else if (imageUrl !== null && imageUrl.includes(".mp4")) {
+                       
+                        console.log("video");
+                        }
+                         else {
                             $("#searchednews").append(
-
-                                "<br>"
-                                + "<h2>" + data.results[index].title + "</h2>"
+                                 "<h2>" + title + "</h2>"
                                 + "<br>"
-                                + "<img src='" + data.results[index].image_url + "'/>"
+                                + "<img src='" + imageUrl + "'/>"
                                 + "<br>"
-                                + "<p>" + data.results[index].description + "</p>"
-
-                                + "<a href='" + data.results[index].link + "'>Read More</a>"
-                                + "<br>"
+                                + "<p class='desc'>" + description + "</p>"
+                                + "<a href='" + link + "'>"
+                                + "<button>"
+                                + "Read More"
+                                + "</button>"
+                                + "</a>"
+                                + "<hr>"
 
                             )
 
                         }
-
 
                     }
                 });
             }
 
 
-
+        
 
         });
 }
 
+$("#trendingSel").on("change", function () {
+    option = (this.value);
+    getTrendingNews(option);
+})
 
-
-$("#search").on("click", function (event) {
-    event.preventDefault();
-    var search = $("#searchinput").val();
+$("#searchbtn").on("click", function () {  
+  
+    search = $("#searchbar").val();
     getSearchedNews(search);
 });
+
+
+
+
+// var option = $("#trendingSelect").find(":selected").val();
+
+// console.log($("option").getAttribute("value"));
