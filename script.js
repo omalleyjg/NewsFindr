@@ -15,10 +15,7 @@ function getTrendingNews(option) {
 
                     for (let index = 0; index < data.results.length; index++) {
 
-                        // $("a").on("click", function () {
-                        //     Window.open(link._blank)
-                        // });
- 
+                       
 
                         var title = data.results[index].title;
                         var description = data.results[index].description;
@@ -38,7 +35,7 @@ function getTrendingNews(option) {
                                 + "<br>"
                                 + "<p class='desc'>" + description + "</p>"
                                 + "<a href='" + link + "'>"
-                                + "<button>"
+                                + "<button class='readmoreBtn'>"
                                 + "Read More"
                                 + "</button>"
                                 + "</a>"
@@ -51,7 +48,7 @@ function getTrendingNews(option) {
                                 + "<br>"
                                 + "<img src='" + imageUrl + "'/>"
                                 + "<a href='" + link + "'>"
-                                + "<button>"
+                                + "<button class='readmoreBtn'>"
                                 + "Read More"
                                 + "</button>"
                                 + "</a>"
@@ -71,7 +68,7 @@ function getTrendingNews(option) {
                                 + "<br>"
                                 + "<p class='desc'>" + description + "</p>"
                                 + "<a href='" + link + "'>"
-                                + "<button>"
+                                + "<button class='readmoreBtn'>"
                                 + "Read More"
                                 + "</button>"
                                 + "</a>"
@@ -133,7 +130,7 @@ function getSearchedNews(search) {
           + "<br>"
           + "<p class='desc'>" + description + "</p>"
           + "<a href='" + link + "'>"
-          + "<button>"
+          + "<button class='readmoreBtn'>"
           + "Read More"
           + "</button>"
           + "</a>"
@@ -141,6 +138,19 @@ function getSearchedNews(search) {
           + "<hr>"
   
       )
+      
+$(".saveBtn2").on("click", function () {
+    var title = $(this).find("p").text();  
+    var description = $(this).find("p").text();
+    var link = $(this).find("a").attr("href");
+    var imageUrl = $(this).parent().find("img").attr("src");
+   
+  
+    saveNews = [];
+    var saveNews = JSON.parse(localStorage.getItem("savednews")) || [{}];
+    saveNews.push({title : title, description : description, link : link, imageUrl : imageUrl});
+    localStorage.setItem("savednews", JSON.stringify(saveNews));
+})
   }
   
               });
@@ -169,7 +179,6 @@ if ($("#searchbar").val() !== " " ) {
 }) 
 
 $("#search-history").on("click", function () {
-    
 getHistory();
 }
 )
@@ -193,9 +202,6 @@ $(".history").on("click", function () {
 
 }
 
-$(".saveBtn").on("click", function () {
-
-})
 
 
 var SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
