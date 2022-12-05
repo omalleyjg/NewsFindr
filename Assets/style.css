@@ -9,10 +9,27 @@
 body{
     margin: 2vw;
 }
-
- #searchbar{
-    margin-top:  20px;
-} 
+.hero-body{
+    word-spacing: 1px;
+ 
+}
+span:hover{
+     color: rosybrown;
+}
+#searchbar{
+    margin: 20px 40px 0px 0px;
+    background-color: lightgray;
+    border-color: black ;
+    border-style: outset;
+    border: 2px;
+    
+}
+#searchbar:hover{
+   
+    border-style: outset;
+    border-color:aqua ;
+    background-color: lightblue;
+}
 
 #herobanner{
     margin-bottom: 20px;
@@ -89,5 +106,31 @@ h2{
 img {
     max-height: 200px;
     width: 300px;
+}
+#trendingSel{
+    text-align: center;
+    background-image: url(../Assets/image-1.jpg);
+    border-radius: 40px;
+    font-style: italic;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',  Verdana, sans-serif;
+    background-color: aquamarine;
+}
+#trendingSel:hover{
+    
+   border-radius: 40px;
+   color: black;
+   border-style: outset;
+   border-color:aqua ;
+  
+}
+#searchbtn{
+    color: black;
+    box-shadow: 20px 20px 50px 10px aquamarine inset;
+}
+#searchbtn:hover{
+   color: black;
+   border-radius: 50px;
+   border-style: outset;
+   border-color:aqua ;
 }
 

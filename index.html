@@ -18,10 +18,10 @@
         <section class="hero is-primary highlight" id="herobanner">
             <div class="hero-body">
                 <p class="title">
-                    NewsFindr
+                    <span>NewsFindr</span>
                 </p>
                 <p class="subtitle">
-                    Best Place to find the latest news!
+                    <span>Best Place to find the latest news!</span>
                 </p>
             </div>
         <a id="search-history">Search History</a>
@@ -40,7 +40,7 @@
                     <section class="hero is-primary" id="searchbanner">
                         <div class="hero-body">
                             <p class="title">
-                                NewsFindr
+                                <span>NewsFindr</span>
                             </p>
                         </div>
                     </section>
@@ -56,7 +56,7 @@
                                    
                                    
                                      <button class="button is-outlined" id="searchbtn">Search</button>
-                                    <div class="container is-fluid" style="overflow-y: scroll; height:500px;"
+                                    <div class="container is-fluid" style="overflow-y: scroll ;box-shadow: 20px 20px 50px 10px lightgray inset; border-radius: 8px 8px 8px 8px; height:600px;"
                                         id="searchednews">
 
                                     </div>
@@ -89,27 +89,52 @@
                     <section class="hero is-primary" id="trendingbanner">
                         <div class="hero-body">
                             <p class="title">
-                                Trending News
+                                <span>Trending News</span>
                             </p>
                         </div>
-                        <select name="" id="trendingSel">
-                            <option value="top">Top</option>
-                            <option value="world">World</option>
-                            <option value="technology">Technology</option>
-                            <option value="sports">Sports</option>
-                            <option value="science">Science</option>
-                            <option value="politics">Politics</option>
-                            <option value="health">Health</option>
-                            <option value="food">Food</option>
-                            <option value="environment">Environment</option>
-                            <option value="entertainment">Entertainment</option>
-                            <option value="business">Business</option>
-                        </select>
+
                     </section>
+                    <br>
+                    <select name="" id="trendingSel">
+                        <option value="top">Top</option>
+                        <option value="world">World</option>
+                        <option value="technology">Technology</option>
+                        <option value="sports">Sports</option>
+                        <option value="science">Science</option>
+                        <option value="politics">Politics</option>
+                        <option value="health">Health</option>
+                        <option value="food">Food</option>
+                        <option value="environment">Environment</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="business">Business</option>
+                    </select>
+                    <style>
+                   
+                        ::-webkit-scrollbar {
+                          width: 10px;
+                        }
+                        
+                        
+                        ::-webkit-scrollbar-track {
+                          box-shadow: inset 0 0 5px grey; 
+                          border-radius: 10px;
+                        }
+                         
+                        
+                        ::-webkit-scrollbar-thumb {
+                          background: aquamarine; 
+                          border-radius: 10px;
+                        }
+                        
+                       
+                    </style>
+                    <br>
+                    <br>
+                    <br>
                     <div class="columns">
                         <div class="column">
                            
-                            <div class="container is-fluid" style="overflow-y: scroll; height:500px;" id="trending">
+                            <div class="container is-fluid" style="overflow-y: scroll; box-shadow: 20px 20px 50px 10px lightgray inset;  border-radius: 8px 8px 8px 8px; height:800px;" id="trending">
 
                             </div>
                         </div>
