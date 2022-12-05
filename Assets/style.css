@@ -7,12 +7,12 @@
 }
 
 body{
-    margin: 50px;
+    margin: 2vw;
 }
 
-#searchbar{
-    margin: 20px 40px 0px 0px;
-}
+ #searchbar{
+    margin-top:  20px;
+} 
 
 #herobanner{
     margin-bottom: 20px;
@@ -40,3 +40,54 @@ body{
 html{
     background-color: #FCF5E5;
 }
+
+h2{
+    font-size: larger;
+    font-weight: 600;
+}
+.desc{
+    max-height: 300px;
+    width: auto;
+    
+    overflow: hidden;
+}
+#searchednews p{
+    max-height: 240px;
+    width: auto;
+    
+    overflow: hidden;
+}
+
+#trending p{
+    max-height: 240px;
+    width: auto;
+    
+    overflow: hidden;
+}
+
+
+#searchednews button{
+   padding: 5px;
+   margin: 10px;
+}
+
+#trending button{
+  padding: 5px;
+  margin: 10px;
+}
+
+#speech{
+    border-radius: 100px;
+    text-align: center;
+    height: 50px;
+    width: 50px;
+    background: url(https://www.svgrepo.com/show/375847/mic.svg);
+    background-size: 100% 100%;
+   margin: 15px 0px 0px 0px;
+}
+
+img {
+    max-height: 200px;
+    width: 300px;
+}
+
