@@ -3,7 +3,7 @@
 function getTrendingNews(option) {
     $("#trending").empty();
    
-    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_1412872da2511db6023cd470fd39cc0b01a8b&&country=ca,us&category=" + option;
+    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_14150adafbda96cefd9af95a18dcc6356c3fe&&country=ca,us&category=" + option;
 
 
     fetch(apiUrl)

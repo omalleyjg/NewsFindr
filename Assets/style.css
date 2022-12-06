@@ -14,7 +14,7 @@ body{
  
 }
 span:hover{
-     color: rosybrown;
+    color: rosybrown;
 }
 #searchbar{
     margin: 20px 40px 0px 0px;
@@ -109,28 +109,64 @@ img {
 }
 #trendingSel{
     text-align: center;
-    background-image: url(../Assets/image-1.jpg);
-    border-radius: 40px;
+    border-radius: 30px;
     font-style: italic;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',  Verdana, sans-serif;
-    background-color: aquamarine;
+    background-color:lightseagreen;
+    border-style: outset;
+    border: 5px;
 }
 #trendingSel:hover{
-    
-   border-radius: 40px;
+   
+   background-image: url(../Assets/image-1.jpg);
+   border-radius: 30px;
    color: black;
    border-style: outset;
-   border-color:aqua ;
+   border-color:aqua;
   
 }
 #searchbtn{
     color: black;
-    box-shadow: 20px 20px 50px 10px aquamarine inset;
+    box-shadow: 20px 20px 50px 10px #4682B4 inset;
+    border-radius: 50px;
 }
 #searchbtn:hover{
    color: black;
+   box-shadow: 20px 20px 50px 10px aquamarine inset;
    border-radius: 50px;
    border-style: outset;
    border-color:aqua ;
-}
+  
 
+}
+button{
+    background-color:#4682B4;
+    border-radius: 50px;
+    border: 2px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    
+}
+button:hover{
+    background-color: lightcoral;
+    border-radius: 50px;
+    border-style: outset;
+    color:white;
+}
+.search-history{
+    text-align: center;
+    align-items: center;
+    color:black;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    background-color: lightgrey;
+    border-style: outset;
+    border-radius: 8px;
+    
+}
+.search-history:hover{
+    background-color: #4682B4;
+    border-radius: 50px;
+    border-style: outset;
+    color:white;
+}
