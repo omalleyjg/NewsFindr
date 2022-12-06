@@ -1,9 +1,18 @@
+$("#searchedArrowR").css("display", "none");
+$("#searchedArrowL").css("display", "none");
 
- 
-function getTrendingNews(option) {
-    $("#trending").empty();
-   
-    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_1412872da2511db6023cd470fd39cc0b01a8b&&country=ca,us&category=" + option;
+getTrendingNews(option = "top", pageNum = 1);
+function getTrendingNews(option, pageNum) {
+    $("#trending").empty()
+    $("#trendingTitle").text("Trending News");
+    $("#trendingSel").css("display", "inline-block")
+    $("#backBtn").css("display", "none");
+    $("#trending").append(
+        "<br>"
+        +"<img class='loading' src='http://www.jardinsdemetis.com/frontend/parc/pub/images/ajax/loading_blue.gif'/>"
+    )
+
+    var apiUrl = "https://newsdata.io/api/1/news?apikey=pub_142274f129fb361dde744c38f0ffdc06e6c3f&language=en&page=" + pageNum + "&country=ca,us&category=" + option;
 
 
     fetch(apiUrl)
@@ -12,26 +21,35 @@ function getTrendingNews(option) {
                 console.log(response);
                 response.json().then(function (data) {
                     console.log(data);
-
+                    $("#trending").empty();
+                    if (data.totalResults === 0) {
+                        $("#trending").append(
+                            "<h2>No more results</h2>"
+                            + "<img src='https://dlvkyia8i4zmz.cloudfront.net/vEQWzpo0QyNT5Bgmy8oc_2020_06_03.gif'/>"
+                        )
+                    }
+                    $("#trendingArrowR").css("display", "inline-block");
+                    $("#trendingArrowL").css("display", "inline-block");
                     for (let index = 0; index < data.results.length; index++) {
 
-                       
+
 
                         var title = data.results[index].title;
                         var description = data.results[index].description;
                         var link = data.results[index].link;
                         var imageUrl = data.results[index].image_url;
 
-                        console.log(data.results[index].image_url);
 
 
                         if (imageUrl === null && description === null) {
-                            console.log("nothing");
+                            console.log("no image or description");
                         }
 
                         else if (imageUrl === null) {
+
                             $("#trending").append(
-                                "<h2>" + title + "</h2>"
+                                "<article>"
+                                + "<h2>" + title + "</h2>"
                                 + "<br>"
                                 + "<p class='desc'>" + description + "</p>"
                                 + "<a href='" + link + "'>"
@@ -39,30 +57,34 @@ function getTrendingNews(option) {
                                 + "Read More"
                                 + "</button>"
                                 + "</a>"
-                                + "<button class='saveBtn1'>" + "Save" + "</button>"
+                                + "<button class='saveBtn'>" + "Save" + "</button>"
                                 + "<hr>"
+                                + "</article>"
                             )
                         } else if (description === null) {
                             $("#trending").append(
-                                "<h2>" + title + "</h2>"
+                                "<article>"
+                                + "<h2>" + title + "</h2>"
                                 + "<br>"
                                 + "<img src='" + imageUrl + "'/>"
+                                + "<br>"
                                 + "<a href='" + link + "'>"
                                 + "<button class='readmoreBtn'>"
                                 + "Read More"
                                 + "</button>"
                                 + "</a>"
-                                + "<button class='saveBtn1'" + "Save" + "</button>"
+                                + "<button class='saveBtn'>" + "Save" + "</button>"
                                 + "<hr>"
+                                + "</article>"
                             )
                         }
                         else if (imageUrl !== null && imageUrl.includes(".mp4")) {
-
                             console.log("video");
                         }
                         else {
                             $("#trending").append(
-                                "<h2>" + title + "</h2>"
+                                "<article>"
+                                + "<h2>" + title + "</h2>"
                                 + "<br>"
                                 + "<img src='" + imageUrl + "'/>"
                                 + "<br>"
@@ -72,135 +94,255 @@ function getTrendingNews(option) {
                                 + "Read More"
                                 + "</button>"
                                 + "</a>"
-                                + "<button class='saveBtn1'>" + "Save" + "</button>"
+                                + "<button class='saveBtn'>" + "Save" + "</button>"
                                 + "<hr>"
-
+                                + "</article>"
                             )
 
                         }
 
                     }
+                    $(".saveBtn").on("click", function () {
+                        var title = $(this).parent().find("h2").text();
+                        var description = $(this).parent().find("p").text();
+                        var link = $(this).parent().find("a").attr("href");
+                        var imageUrl = $(this).parent().find("img").attr("src");
+                        var savedNews = []
+                        var savedNews = JSON.parse(localStorage.getItem("savednews")) || [];
+                        savedNews.push({ Title: title, Description: description, Link: link, Image: imageUrl });
+                        localStorage.setItem("savednews", JSON.stringify(savedNews));
+                    })
+                });
+            }
+        })
+
+}
+
+$("#trendingArrowR").on("click", function () {
+    pageNum++;
+    getTrendingNews(option, pageNum);
+})
+
+$("#trendingArrowL").on("click", function () {
+    if (pageNum > 1) {
+        pageNum--;
+        getTrendingNews(option, pageNum);
+    }
+
+    else {
+        pageNum = 1;
+    }
+})
+
+
+function getSearchedNews(search, pageNum) {
+    $("#searchednews").empty()
+    
+    if (search !== "") {
+    $("#searchednews").append(
+        "<br>"
+        +"<img class='loading' src='http://www.jardinsdemetis.com/frontend/parc/pub/images/ajax/loading_blue.gif'/>"
+    )
+    }
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '30e2c5b198msh98fd7763e5904f2p163deajsn67969615a5a2',
+            'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
+        }
+    };
+
+    fetch('https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=' + search.replace(" ", "%20") + '&pageNumber=' + pageNum + '&pageSize=10&autoCorrect=true&safeSearch=true&withThumbnails=true&fromPublishedDate=null&toPublishedDate=null', options)
+        .then(function (response) {
+            if (response.ok) {
+                console.log(response);
+                response.json().then(function (data) {
+                    console.log(data);
+
+                    $("#searchednews").empty();
+                    if (data.totalCount === 0) {
+                        $("#searchednews").append(
+                            "<br>"
+                            +"<h2>No results found</h2>"
+                            + "<img src='https://dlvkyia8i4zmz.cloudfront.net/vEQWzpo0QyNT5Bgmy8oc_2020_06_03.gif'/>"
+                        )
+                    }
+                    $("#searchedArrowR").css("display", "inline-block");
+                    $("#searchedArrowL").css("display", "inline-block");
+
+                    for (let index = 0; index < data.value.length; index++) {
+
+                        var title = data.value[index].title;
+                        var description = data.value[index].description;
+                        var link = data.value[index].url;
+                        var imageUrl = data.value[index].image.url;
+
+                        $("#searchednews").append(
+                            "<article>"
+                            + "<h2>" + title + "</h2>"
+                            + "<br>"
+                            + "<img src='" + imageUrl + "'/>"
+                            + "<br>"
+                            + "<p class='desc'>" + description + "</p>"
+                            + "<a href='" + link + "'>"
+                            + "<button class='readmoreBtn'>"
+                            + "Read More"
+                            + "</button>"
+                            + "</a>"
+                            + "<button class='saveBtn'>" + "Save" + "</button>"
+                            + "<hr>"
+                            + "</article>"
+                        )
+
+
+                    }
+
+                    $(".saveBtn").on("click", function () {
+                        var title = $(this).parent().find("h2").text();
+                        var description = $(this).parent().find("p").text();
+                        var link = $(this).parent().find("a").attr("href");
+                        var imageUrl = $(this).parent().find("img").attr("src");
+                        var savedNews = []
+                        var savedNews = JSON.parse(localStorage.getItem("savednews")) || [];
+                        savedNews.push({ Title: title, Description: description, Link: link, Image: imageUrl });
+                        localStorage.setItem("savednews", JSON.stringify(savedNews));
+                    })
+
                 });
             }
         })
 }
 
-getTrendingNews(option = "top");
 
-
-function getSearchedNews(search) {
-    $("#searchednews").empty()
-  
-   
-      const options = {
-          method: 'GET',
-          headers: {
-              'X-RapidAPI-Key': '30e2c5b198msh98fd7763e5904f2p163deajsn67969615a5a2',
-              'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
-          }
-      };
-      
-      fetch('https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q='+ search.replace(" ", "%20") + '&pageNumber=1&pageSize=20&autoCorrect=true&safeSearch=true&withThumbnails=true&fromPublishedDate=null&toPublishedDate=null', options)
-      .then(function (response) {
-          if (response.ok) {
-              console.log(response);
-              response.json().then(function (data) {
-                  console.log(data);
-  
-      
-                  if (data.totalCount === 0) {
-                      $("#searchednews").append(
-                          "<h2>No results found</h2>"
-                          + "<img src='https://dlvkyia8i4zmz.cloudfront.net/vEQWzpo0QyNT5Bgmy8oc_2020_06_03.gif'/>"
-                      )
-                  }
-  
-  
-  for (let index = 0; index < data.value.length; index++) {
-      
-      var title = data.value[index].title;  
-      var description = data.value[index].description;
-      var link = data.value[index].url;
-      var imageUrl = data.value[index].image.url;
-  
-      $("#searchednews").append(
-          "<h2>" + title + "</h2>"
-          + "<br>"
-          + "<img src='" + imageUrl + "'/>"
-          + "<br>"
-          + "<p class='desc'>" + description + "</p>"
-          + "<a href='" + link + "'>"
-          + "<button class='readmoreBtn'>"
-          + "Read More"
-          + "</button>"
-          + "</a>"
-          + "<button class='saveBtn2'>" + "Save" + "</button>"
-          + "<hr>"
-  
-      )
-      
-$(".saveBtn2").on("click", function () {
-    var title = $(this).find("p").text();  
-    var description = $(this).find("p").text();
-    var link = $(this).find("a").attr("href");
-    var imageUrl = $(this).parent().find("img").attr("src");
-   
-  
-    saveNews = [];
-    var saveNews = JSON.parse(localStorage.getItem("savednews")) || [{}];
-    saveNews.push({title : title, description : description, link : link, imageUrl : imageUrl});
-    localStorage.setItem("savednews", JSON.stringify(saveNews));
+$("#searchbtn").on("click", function () {
+    if ($("#searchbar").val() !== " ") {
+        search = $("#searchbar").val();
+        getSearchedNews(search, pageNum = 1);
+    }
 })
-  }
-  
-              });
-          }
-      })
-      
-  
-  }
-        
+
+
+$("#searchedArrowR").on("click", function () {
+    pageNum++;
+    getSearchedNews(search, pageNum);
+})
+
+$("#searchedArrowL").on("click", function () {
+    if (pageNum > 1) {
+        pageNum--;
+        getSearchedNews(search, pageNum);
+    }
+
+    else {
+        pageNum = 1;
+
+    }
+})
+
+
+
+$("#savednews").on("click", function () {
+
+    getSavedNews()
+})
+
+function getSavedNews() {
+    $("#trendingSel").css("display", "none");
+    $("#backBtn").css("display", "inline-block");
+    $("#trendingTitle").text("Saved News");
+    $("#trendingArrowR").css("display", "none");
+    $("#trendingArrowL").css("display", "none");
+    $("#trending").empty()
+
+
+    var savedNews = JSON.parse(localStorage.getItem("savednews")) || [];
+
+    if (savedNews.length === 0) {
+        $("#trending").append(
+            "<br>"
+            + "<h2>Nothing saved!</h2>"
+
+        )
+    }
+
+
+    for (let index = 0; index < savedNews.length; index++) {
+
+        if (savedNews[index].Image === undefined) {
+            $("#trending").append(
+                "<article>"
+                + "<h2>" + savedNews[index].Title + "</h2>"
+                + "<br>"
+                + "<p class='desc'>" + savedNews[index].Description + "</p>"
+                + "<a href='" + savedNews[index].Link + "'>"
+                + "<button class='readmoreBtn'>"
+                + "Read More"
+                + "</button>"
+                + "</a>"
+                + "<button class='deleteBtn'>" + "Delete" + "</button>"
+                + "<hr>"
+                + "</article>"
+            )
+        }
+        else if (savedNews[index].Description === undefined) {
+            $("#trending").append(
+                "<article>"
+                + "<h2>" + savedNews[index].Title + "</h2>"
+                + "<br>"
+                + "<img src='" + savedNews[index].Image + "'/>"
+                + "<a href='" + savedNews[index].Link + "'>"
+                + "<button class='readmoreBtn'>"
+                + "Read More"
+                + "</button>"
+                + "</a>"
+                + "<button class='deleteBtn'>" + "Delete" + "</button>"
+                + "<hr>"
+                + "</article>"
+            )
+        }
+        else {
+
+            $("#trending").append(
+                "<article>"
+                + "<h2>" + savedNews[index].Title + "</h2>"
+                + "<br>"
+                + "<img src='" + savedNews[index].Image + "'/>"
+                + "<br>"
+                + "<p class='desc'>" + savedNews[index].Description + "</p>"
+                + "<a href='" + savedNews[index].Link + "'>"
+                + "<button class='readmoreBtn'>"
+                + "Read More"
+                + "</button>"
+                + "</a>"
+                + "<button class='deleteBtn'>" + "Delete" + "</button>"
+                + "<hr>"
+                + "</article>"
+            )
+        }
+
+    }
+    $(".deleteBtn").on("click", function () {
+        var index = $(this).parent().index();
+        savedNews.splice(index, 1);
+        localStorage.setItem("savednews", JSON.stringify(savedNews));
+        getSavedNews();
+    })
+}
+
+
+
+
+$("#backBtn").on("click", function () {
+    ;
+    getTrendingNews(option, pageNum = 1);
+})
 
 
 $("#trendingSel").on("change", function () {
     option = $(this).val();
-    getTrendingNews(option);
+    getTrendingNews(option, pageNum = 1);
 })
 
-$("#searchbtn").on("click", function () {
-if ($("#searchbar").val() !== " " ) {
-    search = $("#searchbar").val();
-    getSearchedNews(search);
-    searchHistory = []
-    var searchHistory = JSON.parse(localStorage.getItem("history")) || [];
-    searchHistory.push(search);
-    localStorage.setItem("history", JSON.stringify(searchHistory));
-}
-}) 
-
-$("#search-history").on("click", function () {
-getHistory();
-}
-)
-//  make save news fuction  and save to local storage
-
-
-function getHistory() {
-
-    var searchHistory = JSON.parse(localStorage.getItem("history")) || [];
-for (let i = 0; i < searchHistory.length; i++) {
-    
-   
-    $("#historyDiv").append(
-       "<a  class='history' data='" + searchHistory[i] + "'>" + searchHistory[i] + "</a>"
-        + "<br>");
-}
-$(".history").on("click", function () {
-    $("#searchbar").val($(this).attr("data"))
-      
-  })
-
-}
 
 
 
@@ -216,8 +358,6 @@ $("#speech").on("click", function () {
     recognition.start();
 }
 )
-
-
 
 console.log(recognition);
 

@@ -13,11 +13,9 @@ body{
     word-spacing: 1px;
  
 }
-span:hover{
-     color: rosybrown;
-}
+
 #searchbar{
-    margin: 20px 40px 0px 0px;
+    margin: 20px 0px 0px 0px;
     background-color: lightgray;
     border-color: black ;
     border-style: outset;
@@ -42,8 +40,9 @@ span:hover{
 }
 
 button{
-    margin: 40px 0px 40px 0px
+    margin: 10px 0px 20px 0px
 }
+
 
 #trendingbanner{
     margin: 3px 10px 10px 10px;
@@ -62,24 +61,19 @@ h2{
     font-size: larger;
     font-weight: 600;
 }
-.desc{
-    max-height: 300px;
-    width: auto;
-    
-    overflow: hidden;
-}
+
 #searchednews p{
     max-height: 240px;
     width: auto;
-    
     overflow: hidden;
+    
 }
 
 #trending p{
     max-height: 240px;
     width: auto;
-    
     overflow: hidden;
+   
 }
 
 
@@ -104,8 +98,8 @@ h2{
 }
 
 img {
-    max-height: 200px;
-    width: 300px;
+    max-height: 300px;
+    width: 400px;
 }
 #trendingSel{
     text-align: center;
@@ -115,17 +109,12 @@ img {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',  Verdana, sans-serif;
     background-color: aquamarine;
 }
-#trendingSel:hover{
-    
-   border-radius: 40px;
-   color: black;
-   border-style: outset;
-   border-color:aqua ;
-  
-}
+
+
 #searchbtn{
     color: black;
     box-shadow: 20px 20px 50px 10px aquamarine inset;
+    transition: .5s;
 }
 #searchbtn:hover{
    color: black;
@@ -134,3 +123,54 @@ img {
    border-color:aqua ;
 }
 
+#trendingArrows{
+    display: flex;
+    justify-content:space-between;
+}
+#trendingArrowR,#trendingArrowL{
+   font-size: larger;
+   background-color: #4682B4;
+   color:white;
+   margin: 5px;
+   padding: 5px;
+   border-radius: 10px;
+}
+#searchedArrows{
+    display: flex;
+    justify-content:space-between;
+}
+
+#searchedArrowR,#searchedArrowL{
+    font-size: larger;
+   background-color: #4682B4;
+   color:white;
+   margin: 5px;
+   padding: 5px;
+   border-radius: 10px;
+}
+#savedNewsAligner{
+    display: flex;
+    justify-content: end;
+   
+  
+    
+}
+#savednews{
+    font-size: 30px;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px 0px 5px 0px;
+    
+}
+.deleteBtn{
+background-color: #D2042D ;
+}
+
+.deleteBtn:hover{
+    background-color: #880808;
+}
+
+.loading{
+    width: 150px;
+    height: 150px;
+}

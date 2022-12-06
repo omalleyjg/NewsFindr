@@ -17,6 +17,7 @@
     <div class="container is-fluid">
         <section class="hero is-primary highlight" id="herobanner">
             <div class="hero-body">
+
                 <p class="title">
                     <span>NewsFindr</span>
                 </p>
@@ -24,11 +25,13 @@
                     <span>Best Place to find the latest news!</span>
                 </p>
             </div>
-        <a id="search-history">Search History</a>
+            <div id="savedNewsAligner">
+                <a id="savednews" href="#right-side">Saved News</a>
+            </div>
         </section>
     </div>
 
-    <section class="columns is-variable is-1 container is-fluid">
+    <section class="columns is-variable container is-fluid">
 
 
 
@@ -46,17 +49,22 @@
                     </section>
                     <div class="columns">
                         <div class="column">
-                          <button class="button" id="speech"></button>
+                            <button class="button" id="speech"></button>
                             <input style="width: 80%;" class="input is-rounded" id="searchbar" type="text"
                                 placeholder="What are you looking for?">
-                               
+
                             <div class="columns">
-                                
+
                                 <div class="column">
-                                   
-                                   
-                                     <button class="button is-outlined" id="searchbtn">Search</button>
-                                    <div class="container is-fluid" style="overflow-y: scroll ;box-shadow: 20px 20px 50px 10px lightgray inset; border-radius: 8px 8px 8px 8px; height:600px;"
+
+
+                                    <button class="button is-outlined" id="searchbtn">Search</button>
+                                    <div id="searchedArrows">
+                                        <a id="searchedArrowL">🢀</a>
+                                        <a id="searchedArrowR">🢂</a>
+                                    </div>
+                                    <div class="container is-fluid"
+                                        style="overflow-y: scroll ;box-shadow: 20px 20px 50px 10px lightgray inset; border-radius: 8px 8px 8px 8px; height:600px;"
                                         id="searchednews">
 
                                     </div>
@@ -75,7 +83,7 @@
 
         <!-- Blank Divider -->
 
-        <section class="column is-narrow" id="historyDiv">
+        <section class="column is-narrow">
 
         </section>
 
@@ -89,13 +97,13 @@
                     <section class="hero is-primary" id="trendingbanner">
                         <div class="hero-body">
                             <p class="title">
-                                <span>Trending News</span>
+                                <span id="trendingTitle"></span>
                             </p>
                         </div>
 
                     </section>
                     <br>
-                    <select name="" id="trendingSel">
+                    <select id="trendingSel">
                         <option value="top">Top</option>
                         <option value="world">World</option>
                         <option value="technology">Technology</option>
@@ -108,33 +116,35 @@
                         <option value="entertainment">Entertainment</option>
                         <option value="business">Business</option>
                     </select>
+                    <button id="backBtn">Back</button>
+                    <div id="trendingArrows">
+                        <a id="trendingArrowL">🢀</a>
+                        <a id="trendingArrowR">🢂</a>
+                    </div>
                     <style>
-                   
                         ::-webkit-scrollbar {
-                          width: 10px;
+                            width: 7px;
                         }
-                        
-                        
+
+
                         ::-webkit-scrollbar-track {
-                          box-shadow: inset 0 0 5px grey; 
-                          border-radius: 10px;
+                            box-shadow: inset 0 0 5px grey;
+                            border-radius: 10px;
                         }
-                         
-                        
+
+
                         ::-webkit-scrollbar-thumb {
-                          background: aquamarine; 
-                          border-radius: 10px;
+                            background: #4682B4;
+                            border-radius: 10px;
                         }
-                        
-                       
                     </style>
-                    <br>
-                    <br>
-                    <br>
+
                     <div class="columns">
                         <div class="column">
-                           
-                            <div class="container is-fluid" style="overflow-y: scroll; box-shadow: 20px 20px 50px 10px lightgray inset;  border-radius: 8px 8px 8px 8px; height:800px;" id="trending">
+
+                            <div class="container is-fluid"
+                                style="overflow-y: scroll; box-shadow: 20px 20px 50px 10px lightgray inset;  border-radius: 8px 8px 8px 8px; height:800px;"
+                                id="trending">
 
                             </div>
                         </div>
