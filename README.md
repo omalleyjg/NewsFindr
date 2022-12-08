@@ -4,7 +4,7 @@
 
 NewsFindr is a news aggregator that allows users to search for news articles or search for trending news articles by category and displays the results in a clean and easy to read format with links to read more. Users can also save articles and view them at a later time.
 
-![alt text](assets/screenshot1.png)
+![Alt text](Assets/Screenshot1.png)
 
 ## Usage
 click on the link below to view the deployed application
