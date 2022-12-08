@@ -2,25 +2,33 @@
 
 ## Description
 
-To give users quck access to news articles related to their specific search criteria.
+NewsFindr is a news aggregator that allows users to search for news articles or search for trending news articles by category and displays the results in a clean and easy to read format with links to read more. Users can also save articles and view them at a later time.
 
-This project was designed to enhance the user experince when searching for the latest news on any given topic.
-
-- What did you learn?
-
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+![alt text](assets/screenshot1.png)
 
 ## Usage
+click on the link below to view the deployed application
+https://omalleyjg.github.io/NewsFindr/
 
-Provide instructions and examples for use. Include screenshots as needed.
+* Voice search is only available on chrome browser
+* Text input field to search for articles by keyword
+* Category dropdown to search for trending articles by category
+* Click the arrow buttons to cycle through pages to view more related articles 
+* Click a read more to view the article in the original source
+* Click the save button to save articles for later viewing
+* Click saved news to view saved articles
+* Click the delete button to delete saved articles
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+## Features
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+* Search for news articles by keyword
+* Search for news articles by category
+* View articles in a clean and easy to read format
+* View article in original source 
+* Save articles for later viewing
+* Cycle through pages to view more related articles
+* View saved articles
+
 
 ## Credits
 
@@ -36,55 +44,13 @@ https://github.com/jayasreeyuvi
 Jeremy Thomas (Bulma Framework Creator)
 https://github.com/jgthms
 
-
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+### Apis
+https://wicg.github.io/speech-api/ (Web Speech API)
+https://newsdata.io/ (News API)
+https://rapidapi.com/contextualwebsearch/api/web-search (Web Search API/News API)
 
 ## License
 
 MIT License
 
-Copyright (c) 2022 omalleyjg
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-
-## Features
-
-
-
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
