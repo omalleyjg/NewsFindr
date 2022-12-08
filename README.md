@@ -7,6 +7,7 @@ NewsFindr is a news aggregator that allows users to search for news articles or 
 ![Alt text](Assets/Screenshot1.png)
 
 ## Usage
+
 click on the link below to view the deployed application
 https://omalleyjg.github.io/NewsFindr/
 
@@ -45,6 +46,7 @@ Jeremy Thomas (Bulma Framework Creator)
 https://github.com/jgthms
 
 ### Apis
+
 https://wicg.github.io/speech-api/ (Web Speech API)
 https://newsdata.io/ (News API)
 https://rapidapi.com/contextualwebsearch/api/web-search (Web Search API/News API)
@@ -52,6 +54,8 @@ https://rapidapi.com/contextualwebsearch/api/web-search (Web Search API/News API
 ## License
 
 MIT License
+
+## Badges
 
 ![badmath](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
 
@@ -64,8 +68,6 @@ MIT License
 ![badmath](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
 ![badmath](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
-
-## Features
 
 Text Search Function
 Voice Search Function
