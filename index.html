@@ -28,14 +28,11 @@
                 </p>
                 
             </div>
-            <div id="savedNewsAligner">
-                <a id="savednews" href="#right-side">Saved News</a>
-            </div>
         </section>
         
     </div>
 
-    <section class="columns is-variable container is-fluid">
+    <section class="columns container is-fluid is-variable">
 
    
     
@@ -50,7 +47,6 @@
                         <div class="hero-body">
                             <p class="title">
                                 <span>NewsFindr</span>
-                                
                             </p>
                         </div>
                     </section>
@@ -66,12 +62,13 @@
 
 
                                     <button class="button is-outlined" id="searchbtn">Search</button>
-                                    <div id="searchedArrows">
-                                        <a id="searchedArrowL">🢀</a>
-                                        <a id="searchedArrowR">🢂</a>
-                                    </div>
+                                    <div id='searchedArrows'>
+                                        <a id='searchedArrowL'>🢀</a>
+                                        <p id="pagenumsearch"></p>
+                                    <a id='searchedArrowR'>🢂</a>
+                                     </div>
                                     <div class="container is-fluid"
-                                        style="overflow-y: scroll ;box-shadow: 20px 20px 50px 10px lightgray inset; border-radius: 8px 8px 8px 8px; height:810pxpx;"
+                                        style="overflow-x: none; overflow-y: scroll ;box-shadow: 20px 20px 50px 10px lightgray inset; border-radius: 8px 8px 8px 8px; height:655px;"
                                         id="searchednews">
 
                                     </div>
@@ -102,10 +99,14 @@
                 <div class="column" id="right-side">
 
                     <section class="hero is-primary" id="trendingbanner">
+                        <a id="savednewslink">Saved News</a>
+                        <a id="trendingnewslink">Trending News</a>
                         <div class="hero-body">
                             <p class="title">
                                 <span id="trendingTitle"></span>
+                               
                             </p>
+                           
                         </div>
 
                     </section>
@@ -123,9 +124,10 @@
                         <option value="entertainment">Entertainment</option>
                         <option value="business">Business</option>
                     </select>
-                    <button id="backBtn">Back</button>
+                    <br>
                     <div id="trendingArrows">
                         <a id="trendingArrowL">🢀</a>
+                        <p id="pagenumtrending"></p>
                         <a id="trendingArrowR">🢂</a>
                     </div>
                     <style>
@@ -150,7 +152,7 @@
                         <div class="column">
 
                             <div class="container is-fluid"
-                                style="overflow-y: scroll; box-shadow: 20px 20px 50px 10px lightgray inset;  border-radius: 8px 8px 8px 8px; height:950px;"
+                                style="overflow-y: scroll; box-shadow: 20px 20px 50px 10px lightgray inset;  border-radius: 8px 8px 8px 8px; height:720px;"
                                 id="trending">
 
                             </div>

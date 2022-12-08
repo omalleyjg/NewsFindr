@@ -58,31 +58,33 @@ html{
 
 h2{
     font-size: larger;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 #searchednews p{
     max-height: 240px;
     width: auto;
     overflow: hidden;
+    font-weight: 500;
     
 }
 
 #trending p{
     max-height: 240px;
-    width: auto;
+   width: auto;
     overflow: hidden;
+    font-weight: 500;
    
 }
 
 
 #searchednews button{
-   padding: 5px;
+   padding: 10px;
    margin: 10px;
 }
 
 #trending button{
-  padding: 5px;
+  padding: 10px;
   margin: 10px;
 }
 
@@ -105,9 +107,10 @@ img {
     border-radius: 30px;
     font-style: italic;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode',  Verdana, sans-serif;
-    background-color:lightseagreen;
+    background-color:aquamarine;
     border-style: outset;
     border: 5px;
+    margin-bottom: 20px;
 }
 
 
@@ -127,18 +130,24 @@ img {
 #trendingArrows{
     display: flex;
     justify-content:space-between;
+    
+    
 }
 #trendingArrowR,#trendingArrowL{
    font-size: larger;
    background-color: #4682B4;
    color:white;
+   right:300px;
    margin: 5px;
    padding: 5px;
-   border-radius: 10px;
+   border-radius: 15px;
 }
+
+
 #searchedArrows{
     display: flex;
     justify-content:space-between;
+    
 }
 
 #searchedArrowR,#searchedArrowL{
@@ -147,22 +156,26 @@ img {
    color:white;
    margin: 5px;
    padding: 5px;
-   border-radius: 10px;
+   border-radius: 15px;
 }
-#savedNewsAligner{
-    display: flex;
-    justify-content: end;
-   
+
+
+#savednewslink,#trendingnewslink{
+  font-size: larger;
+  padding: 5px;
+   position: absolute;
   
+
     
 }
-#savednews{
-    font-size: 30px;
-    background-color: black;
-    padding: 5px;
-    border-radius: 5px 0px 5px 0px;
-    
+
+#savednewslink:hover{
+color: black;
 }
+#trendingnewslink:hover{
+    color: black;
+}
+
 .deleteBtn{
 background-color: #D2042D ;
 }
@@ -183,11 +196,19 @@ button{
     border: 2px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic;
+    cursor:pointer;
     
 }
 button:hover{
     background-color: lightcoral;
     border-radius: 50px;
-    border-style: outset;
     color:white;
+}
+#pagenumtrending{
+    font-weight: 500;
+    
+}
+#pagenumsearch{
+    font-weight: 500;
+    
 }
