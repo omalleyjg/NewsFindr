@@ -147,7 +147,7 @@ function getSearchedNews(search, pageNum) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '30e2c5b198msh98fd7763e5904f2p163deajsn67969615a5a2',
+            'X-RapidAPI-Key': '5c9c913f46msh1970e4e9f3bc7c7p1c9b21jsnc974815897fa',
             'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
         }
     };
