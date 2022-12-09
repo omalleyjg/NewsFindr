@@ -28,8 +28,8 @@ function getTrendingNews(option, pageNum) {
                 response.json().then(function (data) {
                     console.log(data);
                     // gets the apis totalresults and divides by 10 and rounds down to get number of pages and stores it in a global variable to be used in the page +/- function
-                    var pages = Math.floor(data.totalResults / 10)
-                    globalThis.trendingTotalPages = pages;
+                    var pagesTrending = Math.floor(data.totalResults / 10)
+                    globalThis.trendingTotalPages = pagesTrending;
 
                     $("#trending").empty();
                     // If total count is less than 10, then no results found beacuse the api returns 10 results per page 
@@ -46,7 +46,7 @@ function getTrendingNews(option, pageNum) {
                         $("#trendingArrowL").css("display", "inline-block")
                         $("#pagenumtrending").css("display", "inline-block")
                         $("#pagenumtrending").text(
-                            "Page " + pageNum + " of " + pages)
+                            "Page " + pageNum + " of " + pagesTrending)
                     }
 
 
@@ -206,7 +206,7 @@ $("#searchednews").on('click', 'a', function (e) {
 });
 
 // Searched news
-function getSearchedNews(search, pageNum) {
+function getSearchedNews(search, pageNumSearched) {
     $("#searchednews").empty()
   
     //  loading gif while waiting for the api to respond
@@ -220,12 +220,12 @@ function getSearchedNews(search, pageNum) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '30e2c5b198msh98fd7763e5904f2p163deajsn67969615a5a2', 
+            'X-RapidAPI-Key': '5c9c913f46msh1970e4e9f3bc7c7p1c9b21jsnc974815897fa', 
             'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
         }
     };
     // url for the second api with parameters that change the results
-    fetch('https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=' + search.replace(" ", "%20") + '&pageNumber='+ pageNum +'&pageSize=10&autoCorrect=true&safeSearch=true&withThumbnails=true&fromPublishedDate=null&toPublishedDate=null', options)
+    fetch('https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=' + search.replace(" ", "%20") + '&pageNumber='+ pageNumSearched +'&pageSize=10&autoCorrect=true&safeSearch=true&withThumbnails=true&fromPublishedDate=null&toPublishedDate=null', options)
     .then(function (response) {
             if (response.ok) {
                 console.log(response);
@@ -247,7 +247,7 @@ function getSearchedNews(search, pageNum) {
                         $("#searchedArrowR").css("display", "inline-block");
                         $("#searchedArrowL").css("display", "inline-block")
                         $("#pagenumsearch").text(
-                            "Page " + pageNum + " of " + pages)
+                            "Page " + pageNumSearched + " of " + pages)
 
                     }
 
@@ -308,31 +308,31 @@ function getSearchedNews(search, pageNum) {
 $("#searchbtn").on("click", function () {
     if ($("#searchbar").val() !== " ") {
         search = $("#searchbar").val();
-        getSearchedNews(search, pageNum = 1);
+        getSearchedNews(search, pageNumSearched = 1);
     }
 })
 
 //  arrow buttons to change pages of the search results, returns to page 1 if the last page is reached and goes to the last page if user clicks back on the first page
 $("#searchedArrowR").on("click", function () {
-   if (pageNum >= globalThis.searchedTotalPages) {
-        pageNum = 1
-        getSearchedNews(search, pageNum);
+   if (pageNumSearched >= globalThis.searchedTotalPages) {
+        pageNumSearched = 1
+        getSearchedNews(search, pageNumSearched);
     }
     else {
-        pageNum++;
-        getSearchedNews(search, pageNum);
+        pageNumSearched++;
+        getSearchedNews(search, pageNumSearched);
     }
 })
 
 $("#searchedArrowL").on("click", function () {
-    if (pageNum <= 1) {
-        pageNum = globalThis.searchedTotalPages;
-        getSearchedNews(search, pageNum);
+    if (pageNumSearched <= 1) {
+        pageNumSearched = globalThis.searchedTotalPages;
+        getSearchedNews(search, pageNumSearched);
     }
 
     else {
-        pageNum--
-        getSearchedNews(search, pageNum);
+        pageNumSearched--
+        getSearchedNews(search, pageNumSearched);
 
     }
 })
