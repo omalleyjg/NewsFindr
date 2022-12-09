@@ -182,14 +182,13 @@ $("#trendingArrowR").on("click", function () {
 })
 
 $("#trendingArrowL").on("click", function () {
-    if (pageNum > 1) {
-        pageNum--;
+    if (pageNum <= 1) {
+        pageNum = globalThis.trendingTotalPages;
         getTrendingNews(option, pageNum);
     }
-
     else {
-        pageNum = 1
-        
+        pageNum--;
+        getTrendingNews(option, pageNum);
     }
 })
 
@@ -325,16 +324,15 @@ $("#searchedArrowR").on("click", function () {
 })
 
 $("#searchedArrowL").on("click", function () {
-    if (pageNumSearched > 1) {
+if (pageNumSearched <= 1) {
+        pageNumSearched = globalThis.searchedTotalPages
+        getSearchedNews(search, pageNumSearched);
+    }
+    else {
         pageNumSearched--;
         getSearchedNews(search, pageNumSearched);
     }
 
-    else {
-        pageNumSearched = 1
-        
-
-    }
 })
 
 
