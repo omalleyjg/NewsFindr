@@ -28,8 +28,8 @@ function getTrendingNews(option, pageNum) {
                 response.json().then(function (data) {
                     console.log(data);
                     // gets the apis totalresults and divides by 10 and rounds down to get number of pages and stores it in a global variable to be used in the page +/- function
-                    var pagesTrending = Math.floor(data.totalResults / 10)
-                    globalThis.trendingTotalPages = pagesTrending;
+                    var pages = Math.floor(data.totalResults / 10)
+                    globalThis.trendingTotalPages = pages;
 
                     $("#trending").empty();
                     // If total count is less than 10, then no results found beacuse the api returns 10 results per page 
@@ -46,7 +46,7 @@ function getTrendingNews(option, pageNum) {
                         $("#trendingArrowL").css("display", "inline-block")
                         $("#pagenumtrending").css("display", "inline-block")
                         $("#pagenumtrending").text(
-                            "Page " + pageNum + " of " + pagesTrending)
+                            "Page " + pageNum + " of " + pages)
                     }
 
 
@@ -182,14 +182,14 @@ $("#trendingArrowR").on("click", function () {
 })
 
 $("#trendingArrowL").on("click", function () {
-    if (pageNum <= 1) {
-        pageNum = globalThis.trendingTotalPages;
+    if (pageNum > 1) {
+        pageNum--;
         getTrendingNews(option, pageNum);
     }
 
     else {
-        pageNum--
-        getTrendingNews(option, pageNum);
+        pageNum = 1
+        
     }
 })
 
@@ -220,7 +220,7 @@ function getSearchedNews(search, pageNumSearched) {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '5c9c913f46msh1970e4e9f3bc7c7p1c9b21jsnc974815897fa', 
+            'X-RapidAPI-Key': 'f7f162f972mshe3c8a78dcb6bcd5p1e890djsn16a579244a22', 
             'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
         }
     };
@@ -242,7 +242,7 @@ function getSearchedNews(search, pageNumSearched) {
                             + "<h2>No results found</h2>"
                             + "<img src='https://dlvkyia8i4zmz.cloudfront.net/vEQWzpo0QyNT5Bgmy8oc_2020_06_03.gif'/>"
                         )
-                    }
+                    } 
                     else {
                         $("#searchedArrowR").css("display", "inline-block");
                         $("#searchedArrowL").css("display", "inline-block")
@@ -325,14 +325,14 @@ $("#searchedArrowR").on("click", function () {
 })
 
 $("#searchedArrowL").on("click", function () {
-    if (pageNumSearched <= 1) {
-        pageNumSearched = globalThis.searchedTotalPages;
+    if (pageNumSearched > 1) {
+        pageNumSearched--;
         getSearchedNews(search, pageNumSearched);
     }
 
     else {
-        pageNumSearched--
-        getSearchedNews(search, pageNumSearched);
+        pageNumSearched = 1
+        
 
     }
 })
