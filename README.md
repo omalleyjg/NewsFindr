@@ -6,9 +6,25 @@ NewsFindr is a news aggregator that allows users to search for news articles or 
 
 ![Alt text](Assets/Screenshot1.png)
 
+## User Story
+
+AS A user
+I WANT an application that displays news articles
+SO THAT I can keep up to date with the latest news
+
+GIVEN a webpage that allows me to search for news
+WHEN I type in a news subject
+THEN I am presented with top news results related to that subject
+WHEN I want to see top global news
+THEN I can see the populated area of the page with trending news results
+WHEN I am unable to type and want to say what i am looking for
+THEN I click a button that translates my speech to text
+WHEN I want to store an article I am interested in
+THEN I can save it so it can be viewed later
+
 ## Usage
 
-click on the link below to view the deployed application
+Click on the link below to view the deployed application
 https://omalleyjg.github.io/NewsFindr/
 
 * Voice search is only available on chrome browser
@@ -79,6 +95,3 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ![badmath](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 
-## How to Contribute
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
