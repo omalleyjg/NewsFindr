@@ -70,7 +70,7 @@ Jeremy Thomas (Bulma Framework Creator)
 https://github.com/jgthms
 
 
-## Apis
+## APIs
 
 https://wicg.github.io/speech-api/ (Web Speech API)
 
