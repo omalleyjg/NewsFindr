@@ -1,17 +1,21 @@
 # NewsFindr
 
 ## Description
+
 ```
 NewsFindr is a news aggregator that allows users to search for news articles or search for trending news articles by category and displays the results in a clean and easy to read format with links to read more. Users can also save articles and view them at a later time.
 ```
+
 ![Alt text](Assets/Screenshot1.png)
 
 ## User Story
+
 ```
 AS A user
 I WANT an application that displays news articles
 SO THAT I can keep up to date with the latest news
 ```
+
 ```
 GIVEN a webpage that allows me to search for news
 WHEN I type in a news subject
@@ -23,10 +27,12 @@ THEN I click a button that translates my speech to text
 WHEN I want to store an article I am interested in
 THEN I can save it so it can be viewed later
 ```
+
 ## Usage
 
 Click on the link below to view the deployed application
 https://omalleyjg.github.io/NewsFindr/
+
 ```
  Voice search is only available on chrome browser
  Text input field to search for articles by keyword
@@ -37,7 +43,9 @@ https://omalleyjg.github.io/NewsFindr/
  Click saved news to view saved articles
  Click the delete button to delete saved articles
 ```
+
 ## Features
+
 ```
  Search for news articles by keyword
  Search for news articles by category
@@ -49,7 +57,7 @@ https://omalleyjg.github.io/NewsFindr/
 ```
 
 ## Credits
-```
+
 James O'Malley
 https://github.com/omalleyjg
 
@@ -61,15 +69,16 @@ https://github.com/jayasreeyuvi
 
 Jeremy Thomas (Bulma Framework Creator)
 https://github.com/jgthms
-```
+
+
 ## Apis
-```
+
 https://wicg.github.io/speech-api/ (Web Speech API)
 
 https://newsdata.io/ (News API)
 
 https://rapidapi.com/contextualwebsearch/api/web-search (Web Search API/News API)
-```
+
 ## License
 
 MIT License
