@@ -7,11 +7,12 @@ NewsFindr is a news aggregator that allows users to search for news articles or 
 ![Alt text](Assets/Screenshot1.png)
 
 ## User Story
-
+```
 AS A user
 I WANT an application that displays news articles
 SO THAT I can keep up to date with the latest news
-
+```
+```
 GIVEN a webpage that allows me to search for news
 WHEN I type in a news subject
 THEN I am presented with top news results related to that subject
@@ -21,7 +22,7 @@ WHEN I am unable to type and want to say what i am looking for
 THEN I click a button that translates my speech to text
 WHEN I want to store an article I am interested in
 THEN I can save it so it can be viewed later
-
+```
 ## Usage
 
 Click on the link below to view the deployed application
